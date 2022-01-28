@@ -1,3 +1,3 @@
 # discord_bigbrother
 
-Bot built with Discord.ts to help me learn typescript as well as docker
+Bot built with Discord.ts intented to help me learn Typescript and Docker
