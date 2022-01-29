@@ -1,10 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import { PassThrough } from "stream";
 
 export class TenorAPI {
-    private httpGetAsync(url: string, callback: Function) {
-        
-        
+    private httpGetAsync(url: string, callback: Function) {       
         let ret = axios.get(url)
         .then(res => {
             const headerDate = res.headers && res.headers.date ? res.headers.date : "no response date";
