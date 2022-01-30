@@ -1,19 +1,28 @@
-import { CommandInteraction } from "discord.js";
+import { AutocompleteInteraction, CommandInteraction } from "discord.js";
 import {
     Discord,
     SimpleCommand,
     SimpleCommandMessage,
     Slash,
+    SlashGroup,
     SlashOption
 } from "discordx";
 import fs from "fs";
-import { TenorAPI, } from "./../api/tenor_api.js";
 
 @Discord()
-class Emotes {
-    @Slash("emote")
+@SlashGroup("emotes", "We're too poor for Nitro")
+export abstract class Emotes {
+    @Slash("send")
     sendEmote(
-        @SlashOption("name") name: string, 
+        @SlashOption("name", {
+            autocomplete: (interaction: AutocompleteInteraction) => {
+                interaction.respond([
+                    {name: "option e", value: "e"},
+                    {name: "option f", value: "f"},
+                ]);
+            },
+            type: "STRING",
+        }) name: string, 
         command: CommandInteraction,
     ) {
         if (fs.existsSync("./src/assets/emotes/" + name + ".gif"))
@@ -26,12 +35,12 @@ class Emotes {
         
     }
 
-    @Slash("add_emote")
-    addEmote(
-        @SlashOption("name") name: string,
-        @SlashOption("url") url: string,
-        command: CommandInteraction,
-    ) {
-
-    }
+    // @Slash("add")
+    // addEmote(
+    //     @SlashOption("name") name: string,
+    //     @SlashOption("url") url: string,
+    //     command: CommandInteraction,
+    // ) {
+        
+    // }
 }
