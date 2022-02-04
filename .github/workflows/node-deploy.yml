@@ -36,4 +36,5 @@ jobs:
           script: |
             cd /home/projects/discord_pat
             docker-compose down
+            docker-compose build --no-cache
             docker-compose up -d
