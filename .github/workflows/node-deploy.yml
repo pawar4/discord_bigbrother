@@ -35,10 +35,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/projects/discord_pat
-<<<<<<< HEAD
-            docker compose down
-            docker compose up -d
-=======
             docker-compose down
             docker-compose up -d
->>>>>>> 03dcc2576aeebd23e200c6f3d6a2d3316a4f4e00
