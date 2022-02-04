@@ -15,16 +15,21 @@ import emotes from "./../assets/emotes.json";
 export abstract class Emotes {
     @Slash("send")
     sendEmote(
-        @SlashOption("name") name: string, 
+        @SlashOption("name", {
+            autocomplete: (interaction: AutocompleteInteraction) => {
+                var keys = Object.keys(emotes.gifs);
+                var options = [];
+                for (var key of keys) {
+                    options.push({name: key, value: key})
+                }
+
+                interaction.respond(options);
+            },
+            type: "STRING"
+        }) name: string, 
         command: CommandInteraction,
     ) {
-        
-        // let emotes = JSON.parse(fs.readFileSync("./src/assets/emotes.json"));
-        if (fs.existsSync("./src/assets/emotes/" + <string>name + ".gif"))
-        {
-            command.reply({files: ["./src/assets/emotes/" + name + ".gif"]});
-        }
-        else if (emotes.gifs.hasOwnProperty(name)) {
+        if (emotes.gifs.hasOwnProperty(name)) {
             let test = <keyof typeof emotes.gifs>name;
             command.reply(emotes.gifs[test] + ".gif");
         }
