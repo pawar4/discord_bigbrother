@@ -14,15 +14,7 @@ import fs from "fs";
 export abstract class Emotes {
     @Slash("send")
     sendEmote(
-        @SlashOption("name", {
-            autocomplete: (interaction: AutocompleteInteraction) => {
-                interaction.respond([
-                    {name: "option e", value: "e"},
-                    {name: "option f", value: "f"},
-                ]);
-            },
-            type: "STRING",
-        }) name: string, 
+        name: string, 
         command: CommandInteraction,
     ) {
         if (fs.existsSync("./src/assets/emotes/" + name + ".gif"))
