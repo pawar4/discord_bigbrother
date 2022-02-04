@@ -25,3 +25,15 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           source: .
           target: /home/projects
+
+
+      - name: Deploy node bot on remote server
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/discord_pat
+            docker compose down
+            docker compose up -d
