@@ -9,4 +9,10 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Setup project
-          uses: actions/checkout@v2   
+          uses: actions/checkout@v2
+        
+        - name: create env file
+          run: |
+            touch .env
+            echo botToken=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
+          shell: bash
