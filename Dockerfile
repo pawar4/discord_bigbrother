@@ -2,10 +2,6 @@ FROM node:16.13.2
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY . /app
 
 RUN npm install
-
-COPY . .
-
-CMD [ "npm", "run", "serve" ]

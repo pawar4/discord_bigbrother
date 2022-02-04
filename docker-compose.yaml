@@ -1,0 +1,8 @@
+version: '3'
+services:
+  discord_pat:
+    build: 
+      context: .
+    volumes:
+      - /app
+    command: npm run serve

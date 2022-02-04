@@ -34,6 +34,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /home/discord_pat
+            cd /home/projects/discord_pat
             docker compose down
             docker compose up -d
