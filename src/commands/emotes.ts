@@ -10,9 +10,9 @@ import {
 import fs from "fs";
 
 @Discord()
-// @SlashGroup("emotes", "We're too poor for Nitro")
+@SlashGroup("emotes", "We're too poor for Nitro")
 export abstract class Emotes {
-    @Slash("emote")
+    @Slash("send")
     sendEmote(
         @SlashOption("name") name: string, 
         command: CommandInteraction,
