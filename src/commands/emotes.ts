@@ -14,7 +14,7 @@ import fs from "fs";
 export abstract class Emotes {
     @Slash("emote")
     sendEmote(
-        name: string, 
+        @SlashOption("name") name: string, 
         command: CommandInteraction,
     ) {
         let emotes = JSON.parse("./src/assets/emotes.json");
