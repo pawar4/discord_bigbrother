@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           source: .
-          target: /home/projects
+          target: /home/projects/discord_pat
 
 
       - name: Deploy node bot on remote server
@@ -34,7 +34,6 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd /home/projects/
-            touch tstfile.txt
-            cd discord_pat
-            echo reached the folder
+            cd /home/projects/discord_pat
+            docker compose down
+            docker compose up -d
