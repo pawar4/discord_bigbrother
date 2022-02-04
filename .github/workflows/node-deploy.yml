@@ -1,11 +1,42 @@
 name: Deploy
 
 on:
-    push:
-        branches: [ main ]
+  push:
+      branches: [ main ]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
+  deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Setup project
+          uses: actions/checkout@v2
+        
+        - name: create env file
+          run: |
+            touch .env
+            echo botToken=${{ secrets.DISCORD_BOT_TOKEN }} >> app/discord_pat/.env
+          shell: bash
+        
+        - name: copy files to remote server
+          uses: appleboy/scp-action@master
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USERNAME }}
+            key: ${{ secrets.SSH_KEY }}
+            source: .
+            target: /home/projects
+
+
+        - name: Deploy node bot on remote server
+        - uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USERNAME }}
+            key: ${{ secrets.SSH_KEY }}
+            script: |
+              cd /home/discord_pat
+              docker compose down
+              docker compose up -d
+            
+            
             
