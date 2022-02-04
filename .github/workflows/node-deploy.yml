@@ -35,5 +35,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/discord_pat
-            docker compose down
-            docker compose up -d
+            echo reached the folder
