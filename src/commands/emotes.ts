@@ -7,7 +7,6 @@ import {
     SlashGroup,
     SlashOption
 } from "discordx";
-import fs from "fs";
 import emotes from "./../assets/emotes.json";
 
 @Discord()
