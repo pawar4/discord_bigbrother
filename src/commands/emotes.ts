@@ -5,7 +5,8 @@ import {
     SimpleCommandMessage,
     Slash,
     SlashGroup,
-    SlashOption
+    SlashOption,
+    SlashChoice,
 } from "discordx";
 import emotes from "./../assets/emotes.json";
 
@@ -14,40 +15,11 @@ import emotes from "./../assets/emotes.json";
 export abstract class Emotes {
     @Slash("emote")
     sendEmote(
-        @SlashOption("name", {
-            autocomplete: (interaction: AutocompleteInteraction) => {
-                var keys = Object.keys(emotes.gifs);
-                var options = [];
-                for (var key of keys) {
-                    options.push({name: key, value: key})
-                }
-
-                interaction.respond(options);
-            },
-            type: "STRING"
-        }) name: string, 
-        command: CommandInteraction,
+        @SlashChoice(emotes.gifs)
+        @SlashOption("name",)
+        name: string,
+        interaction: CommandInteraction,
     ) {
-        if (emotes.gifs.hasOwnProperty(name)) {
-            let test = <keyof typeof emotes.gifs>name;
-            command.reply(emotes.gifs[test] + ".gif");
-        }
-        else{
-            command.reply(
-                "I'm probably ruining the moment here but Idk that emote chief. "
-                + "I made you look dumb but like my creater likes to say, it be like "
-                + "that sometimes."
-            );
-        }
-        
+        interaction.reply(name + ".gif");        
     }
-
-    // @Slash("add")
-    // addEmote(
-    //     @SlashOption("name") name: string,
-    //     @SlashOption("url") url: string,
-    //     command: CommandInteraction,
-    // ) {
-        
-    // }
 }
