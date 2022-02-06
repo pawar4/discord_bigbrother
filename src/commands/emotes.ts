@@ -10,9 +10,9 @@ import {
 import emotes from "./../assets/emotes.json";
 
 @Discord()
-@SlashGroup("emotes", "We're too poor for Nitro")
+// @SlashGroup("emotes", "We're too poor for Nitro")
 export abstract class Emotes {
-    @Slash("send")
+    @Slash("emote")
     sendEmote(
         @SlashOption("name", {
             autocomplete: (interaction: AutocompleteInteraction) => {
