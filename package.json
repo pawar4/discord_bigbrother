@@ -18,9 +18,7 @@
     "discord.js": "^13.6.0",
     "discordx": "^9.1.12",
     "dotenv": "^14.3.1",
-    "reflect-metadata": "^0.1.13",
-    "yt-search": "^2.10.3",
-    "ytdl-core": "^4.10.1"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
