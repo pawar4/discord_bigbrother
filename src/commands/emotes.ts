@@ -10,20 +10,12 @@ import {
 } from "discordx";
 import fs from "fs";
 import * as schedule from "node-schedule";
+import emotes from './../assets/emotes.json';
 
-let jsonfile = fs.readFileSync('./src/assets/emotes.json', "utf8");
-let emotes = JSON.parse(jsonfile);
-
-// let rule = new schedule.RecurrenceRule();
-// rule.dayOfWeek = [0, new schedule.Range(0, 6)];
-// rule.hour = 18;
-// rule.minute = 0;
-// schedule.scheduleJob(rule, async function () {
-//     fs.writeFileSync('./src/assets/emotes.json', JSON.stringify(emotes));
-// })
+// let jsonfile = fs.readFileSync('./src/assets/emotes.json', "utf8");
+// let emotes = JSON.parse(jsonfile);
 
 @Discord()
-// @SlashGroup("emotes", "We're too poor for Nitro")
 export abstract class Emotes {
     @Slash("emote")
     sendEmote(
@@ -33,15 +25,4 @@ export abstract class Emotes {
     ) {
         interaction.reply(name + ".gif");        
     }
-
-    // @Slash("add_emote")
-    // addEmote(
-    //     @SlashOption("name",) name: string,
-    //     @SlashOption("url") url: string,
-    //     interaction: CommandInteraction,
-    // ) {
-    //     emotes.gifs[name] = url;
-    //     console.log(emotes);
-    //     interaction.reply("Done :)");
-    // }
 }
