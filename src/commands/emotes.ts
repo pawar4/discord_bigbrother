@@ -30,7 +30,7 @@ export abstract class Emotes {
                 let filteredList = new Array();
                 for (var k of Object.keys(emotes.gifs)) {
                     let res = String(focusedOption.value);
-                    if (k.toLowerCase().includes(res)) {
+                    if (k.toLowerCase().includes(res.toLowerCase())) {
                         filteredList.push({name: k, value: emotes.gifs[k]});
                     }
                 }
