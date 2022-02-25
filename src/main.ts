@@ -19,7 +19,7 @@ export const client = new Client({
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES
     ],
-    // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
+    // botGuilds: ["905329676791214092"]
 });
 
 client.once("ready", async () => {
