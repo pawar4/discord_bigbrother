@@ -31,7 +31,7 @@ export abstract class Emotes {
                 for (var k of Object.keys(emotes.gifs)) {
                     let res = String(focusedOption.value);
                     if (k.toLowerCase().includes(res.toLowerCase())) {
-                        filteredList.push({name: k, value: emotes.gifs[k]});
+                        filteredList.push({name: k, value: k});
                     }
                 }
                 interaction.respond(filteredList);
@@ -40,11 +40,11 @@ export abstract class Emotes {
         }) name: string,
         interaction: CommandInteraction,
     ) {
-        if (!Object.values(emotes.gifs).includes(name)) {
+        if (!Object.keys(emotes.gifs).includes(name)) {
              interaction.reply(`Don't know that one chief. Trying adding it first`);
              return;
         }
-        interaction.reply(name + '.gif');
+        interaction.reply(emotes.gifs[name] + '.gif');
     }
     
     @Slash("add_emote")
